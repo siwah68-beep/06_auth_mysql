@@ -1,4 +1,4 @@
-/* app/style.css — สไตล์พื้นฐานที่ใช้ร่วมกันในหน้า auth */
+/* app/style.css — Dark Mode Style สำหรับหน้า Auth ทั้งหมด */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,86 +11,89 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-  color: #2c3e50;
+  /* พื้นหลังโทนเข้มลึก ลาย Gradient จางๆ */
+  background: radial-gradient(circle at top, #1e2638 0%, #0f172a 100%);
+  color: #f1f5f9;
   padding: 20px;
 }
 
-/* กล่องสีขาวกลางจอ ใช้ในทุกหน้า */
+/* กล่องสีขาวเปลี่ยนเป็น Dark Card */
 .auth-box {
   width: 100%;
   max-width: 400px;
   padding: 36px 32px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06), 
-              0 2px 6px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: #1e293b; /* สีกราไฟต์เข้ม อ่านง่าย */
+  border-radius: 16px;
+  /* ขอบคมชัดเบาๆ พร้อมเงาลึก */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 
+              0 8px 10px -6px rgba(0, 0, 0, 0.5);
 }
 
 .auth-box h1, 
 .auth-box h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  color: #1a252c;
-  margin-bottom: 20px;
+  color: #ffffff;
+  margin-bottom: 24px;
   text-align: center;
+  letter-spacing: -0.5px;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
 label {
   font-size: 0.875rem;
-  font-weight: 600;
-  color: #4a5568;
-  margin-bottom: -8px;
+  font-weight: 500;
+  color: #94a3b8; /* สีเทาสว่าง อ่านง่ายไม่ปวดตา */
+  margin-bottom: -10px;
 }
 
 input {
-  padding: 12px 14px;
+  padding: 12px 16px;
   font: inherit;
   font-size: 0.95rem;
-  border: 1.5px solid #e2e8f0;
-  border-radius: 8px;
-  background-color: #f8fafc;
-  color: #1e293b;
+  background-color: #0f172a; /* พื้นหลังช่องพิมพ์เข้มกว่าตัวกล่อง */
+  border: 1px solid #334155;
+  border-radius: 10px;
+  color: #f8fafc; /* ตัวอักษรสีขาวสว่าง */
   outline: none;
   transition: all 0.2s ease-in-out;
 }
 
+/* ตอนคลิกพิมพ์ที่ Input */
 input:focus {
-  background-color: #ffffff;
-  border-color: #00758f;
-  box-shadow: 0 0 0 3px rgba(0, 117, 143, 0.15);
+  border-color: #38bdf8; /* สีฟ้าสว่าง (Cyan) */
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2); /* ไฟ Glow รอบช่อง */
 }
 
 input::placeholder {
-  color: #a0aec0;
+  color: #64748b;
 }
 
 button {
-  margin-top: 8px;
+  margin-top: 6px;
   padding: 12px 16px;
   font: inherit;
   font-weight: 600;
   font-size: 0.95rem;
-  background-color: #00758f;
+  /* ปุ่มสีฟ้าสว่างตัดกับธีมมืด */
+  background-color: #0284c7;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   color: #ffffff;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  box-shadow: 0 2px 4px rgba(0, 117, 143, 0.2);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
 }
 
 button:hover {
-  background-color: #005f73;
-  box-shadow: 0 4px 12px rgba(0, 117, 143, 0.3);
+  background-color: #38bdf8; /* สว่างขึ้นเมื่อเอาเมาส์ชี้ */
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
   transform: translateY(-1px);
 }
 
@@ -99,14 +102,27 @@ button:active {
   box-shadow: none;
 }
 
+/* ลิงก์เพิ่มเติม เช่น หน้าสมัครสมาชิก / ลืมรหัสผ่าน */
+a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #7dd3fc;
+  text-decoration: underline;
+}
+
 /* ข้อความแจ้ง error ใต้ฟอร์ม */
 .error {
   font-size: 0.875rem;
-  color: #e53e3e;
-  background-color: #fff5f5;
-  border: 1px solid #fed7d7;
-  padding: 10px 12px;
-  border-radius: 6px;
+  color: #fca5a5; /* แดงพาสเทล อ่านง่ายบนพื้นหลังมืด */
+  background-color: rgba(239, 68, 68, 0.15); /* แดงใสจางๆ */
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 12px;
+  border-radius: 8px;
   text-align: center;
   margin-top: 4px;
 }
